@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:mobile_app_frontend/Screen/contacto_tab.dart';
+import 'package:mobile_app_frontend/Screen/contact_tab2.dart';
 import 'package:mobile_app_frontend/Screen/productos_tab.dart';
 
 class BottomNav extends StatefulWidget {
@@ -13,7 +13,7 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int _currentIndex = 0;
 
-  List<Widget> _pages = [ProductosTab(), ContactoTab()];
+  List<Widget> _pages = [ProductosTab(), ContactoTab2()];
 
   @override
   Widget build(BuildContext context) {

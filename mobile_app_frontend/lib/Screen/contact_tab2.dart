@@ -1,11 +1,18 @@
-
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class ContactoTab extends StatelessWidget {
-  //const ContactoTab({super.key});
 
+class ContactoTab2 extends StatefulWidget {
+  //const ContactoTab2({super.key});
+
+  
+
+  @override
+  State<ContactoTab2> createState() => _ContactoTab2State();
+}
+
+class _ContactoTab2State extends State<ContactoTab2> {
   bool isSwitched = false;
+  bool isSwitched2 = false;
   DateTime date = DateTime(2021, 1, 1);
 
   @override
@@ -60,11 +67,11 @@ class ContactoTab extends StatelessWidget {
                           children: [
                             Text(' Lego Star Wars'),
                             Switch(
-                              value: isSwitched,
+                              value: isSwitched2,
                               onChanged: (value) {
                                 setState(() {
-                                  isSwitched = value;
-                                  print(isSwitched);
+                                  isSwitched2 = value;
+                                  print(isSwitched2);
                                 });
                               },
                               activeTrackColor: Colors.lightGreenAccent,
@@ -76,11 +83,13 @@ class ContactoTab extends StatelessWidget {
                     ),
                   ),
                 ),
-                Divider(
-                  color: Colors.red,
+                 Divider(
+                  color: Color.fromARGB(255, 204, 21, 8),
+                  thickness: 1,
                 ),
                 Row(
                   children: [
+                    
                     Text(
                         'Deseo recibir informacion a partir de la siguiente fecha:'),
                   ],
@@ -114,6 +123,11 @@ class ContactoTab extends StatelessWidget {
                   ],
                 ),
                  ),
+                 ElevatedButton(
+                   style: ElevatedButton.styleFrom(minimumSize: Size.fromHeight(40)),
+                   onPressed: (){}, 
+                   child: Text('Enviar Solicitud de Contacto')
+                   )
               ],
             ),
           ),
@@ -121,6 +135,4 @@ class ContactoTab extends StatelessWidget {
       ],
     );
   }
-
-  void setState(Null Function() param0) {}
 }

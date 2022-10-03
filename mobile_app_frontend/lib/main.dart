@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app_frontend/Proyect/main_project.dart';
 import 'package:mobile_app_frontend/Screen/bottom_nav.dart';
 
 void main() {
