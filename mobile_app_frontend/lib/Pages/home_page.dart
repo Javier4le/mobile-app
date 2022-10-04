@@ -12,18 +12,17 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        title: Text('Generic Name App (Enjoy)',style:TextStyle(fontSize: 20)
-        ),
+        title: Text('Generic Name App (Enjoy)', style: TextStyle(fontSize: 20)),
         leading: Builder(
           builder: (BuildContext context) {
             return Container(
-              decoration: const BoxDecoration( 
-                shape: BoxShape.circle,
-                gradient: LinearGradient(
-                colors: [Colors.purple, Colors.blue],
-                begin: Alignment.bottomLeft,
-                end: Alignment.topRight,
-              )),
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: LinearGradient(
+                    colors: [Colors.purple, Colors.blue],
+                    begin: Alignment.bottomLeft,
+                    end: Alignment.topRight,
+                  )),
               child: CircleAvatar(
                 backgroundColor: Colors.transparent,
                 radius: 20,
@@ -77,12 +76,13 @@ class HomePage extends StatelessWidget {
                     ],
                   )),
               Container(
-                
                 height: 50,
                 width: 350,
                 alignment: Alignment.center,
-                child: Text('Share, Live, And Just Enjoy',style: 
-                TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
+                child: Text(
+                  'Share, Live, And Just Enjoy',
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
               )
             ],
           )),

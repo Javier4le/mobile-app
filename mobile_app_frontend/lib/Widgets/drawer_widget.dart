@@ -5,6 +5,7 @@ import 'package:mobile_app_frontend/Pages/home_page.dart';
 import 'package:mobile_app_frontend/Pages/profile_options.dart';
 import 'package:mobile_app_frontend/Pages/profile_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_app_frontend/certamen1_joaquin_mogollon_302/certamen1_joaquin_mogollon_302.dart';
 
 class Drawer_widget extends StatelessWidget {
   const Drawer_widget({
@@ -50,20 +51,6 @@ class Drawer_widget extends StatelessWidget {
               _navigate(context, 'Profile');
             },
           ),
-          // Divider(
-          //   thickness: 2,
-          //   color: Colors.redAccent,
-          // ),
-          // ListTile(
-          //   title: Text('Profile Options'),
-          //   leading: Icon(
-          //     MdiIcons.accountCog,
-          //     color: Color.fromARGB(255, 255, 0, 0),
-          //   ),
-          //   onTap: () {
-          //     _navigate(context, 'POptions');
-          //   },
-          // ),
           Divider(
             thickness: 2,
             color: Colors.redAccent,
@@ -90,7 +77,6 @@ class Drawer_widget extends StatelessWidget {
             ),
             onTap: () => showDialog<String>(
               context: context,
-              
               builder: (BuildContext context) => AlertDialog(
                 backgroundColor: Color(0xff1f1d2c),
                 title: const Text('Log Out'),
@@ -112,20 +98,6 @@ class Drawer_widget extends StatelessWidget {
             color: Colors.redAccent,
           ),
           ListTile(
-            title: Text('Close'),
-            leading: Icon(
-              Icons.close,
-              color: Color.fromARGB(255, 255, 0, 0),
-            ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          Divider(
-            thickness: 2,
-            color: Colors.redAccent,
-          ),
-          ListTile(
             title: Text('Certamen1'),
             leading: Icon(
               MdiIcons.codeTags,
@@ -133,6 +105,20 @@ class Drawer_widget extends StatelessWidget {
             ),
             onTap: () {
               _navigate(context, 'Certamen1');
+            },
+          ),
+          Divider(
+            thickness: 2,
+            color: Colors.redAccent,
+          ),
+          ListTile(
+            title: Text('Close'),
+            leading: Icon(
+              Icons.close,
+              color: Color.fromARGB(255, 255, 0, 0),
+            ),
+            onTap: () {
+              Navigator.pop(context);
             },
           ),
           Divider(
@@ -153,8 +139,8 @@ class Drawer_widget extends StatelessWidget {
         //   return ProfileOptionsPage();
         case 'AppOptions':
           return AppOptionsPage();
-        //case 'Certamen'
-        //return Certamen1(nombre_alumno)();
+        case 'Certamen1':
+          return Certamen1_joaquin_mogollon();
         default:
           return HomePage();
       }

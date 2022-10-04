@@ -14,7 +14,9 @@ class _AppOptionsPageState extends State<AppOptionsPage> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text('Generic Options for App '),
+        title: Text(
+          'Generic Options for App ',
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: Builder(
@@ -35,67 +37,64 @@ class _AppOptionsPageState extends State<AppOptionsPage> {
       body: Container(
         color: Color(0xff1f1d2c),
         child: Container(
-              child: ListView(
-                children: [
-                  ListTile(
-                    title: Text(
-                      'Notifications Options',
-                    ),
-                    leading: Icon(
-                      Icons.circle_notifications,
-                      color: Color.fromARGB(255, 255, 0, 0),
-                    ),
-                    onTap: () {
-                    //  _appnavigator(context, 'NotiOptions');
-                    },
-                  ),
-                  Divider(
-                    thickness: 2,
-                    color: Colors.redAccent,
-                  ),
-                  ListTile(
-                    title: Text(
-                      'App Theme',
-                    ),
-                    leading: Icon(
-                      MdiIcons.brush,
-                      color: Color.fromARGB(255, 255, 0, 0),
-                    ),
-                    onTap: () {
-                    //  _appnavigator(context, 'appTheme');
-                    },
-                  ),
-                  Divider(
-                    thickness: 2,
-                    color: Colors.redAccent,
-                  ),
-                  ListTile(
-                    title: Text(
-                      'Invite Friends',
-                    ),
-                    leading: Icon(
-                      Icons.people,
-                      color: Color.fromARGB(255, 255, 0, 0),
-                    ),
-                    onTap: () {
-                    //  _appnavigator(context, 'InviteF');
-                    },
-                  ),
-                  Divider(
-                    thickness: 2,
-                    color: Colors.redAccent,
-                  ),
-                ],
+          child: ListView(
+            children: [
+              ListTile(
+                title: Text(
+                  'Notifications Options',
+                ),
+                leading: Icon(
+                  Icons.circle_notifications,
+                  color: Color.fromARGB(255, 255, 0, 0),
+                ),
+                onTap: () {
+                  //  _appnavigator(context, 'NotiOptions');
+                },
               ),
-            ),
-        
-        
+              Divider(
+                thickness: 2,
+                color: Colors.redAccent,
+              ),
+              ListTile(
+                title: Text(
+                  'App Theme',
+                ),
+                leading: Icon(
+                  MdiIcons.brush,
+                  color: Color.fromARGB(255, 255, 0, 0),
+                ),
+                onTap: () {
+                  //  _appnavigator(context, 'appTheme');
+                },
+              ),
+              Divider(
+                thickness: 2,
+                color: Colors.redAccent,
+              ),
+              ListTile(
+                title: Text(
+                  'Invite Friends',
+                ),
+                leading: Icon(
+                  Icons.people,
+                  color: Color.fromARGB(255, 255, 0, 0),
+                ),
+                onTap: () {
+                  //  _appnavigator(context, 'InviteF');
+                },
+              ),
+              Divider(
+                thickness: 2,
+                color: Colors.redAccent,
+              ),
+            ],
+          ),
+        ),
       ),
-      
     );
   }
 
- /* void _appnavigator(BuildContext context, String screen) {
+  /* void _appnavigator(BuildContext context, String screen) {
     final route = MaterialPageRoute(builder: (context) {
       switch (screen) {
         case 'NotiOptions':
