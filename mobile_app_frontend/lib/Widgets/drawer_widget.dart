@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:mobile_app_frontend/Certamen_william_gutierrez/certamen1_william_gutierrez.dart';
 import 'package:mobile_app_frontend/Pages/app_config_page.dart';
 import 'package:mobile_app_frontend/Pages/home_page.dart';
 import 'package:mobile_app_frontend/Pages/profile_options.dart';
@@ -90,7 +91,6 @@ class Drawer_widget extends StatelessWidget {
             ),
             onTap: () => showDialog<String>(
               context: context,
-              
               builder: (BuildContext context) => AlertDialog(
                 backgroundColor: Color(0xff1f1d2c),
                 title: const Text('Log Out'),
@@ -132,7 +132,7 @@ class Drawer_widget extends StatelessWidget {
               color: Color.fromARGB(255, 255, 0, 0),
             ),
             onTap: () {
-              _navigate(context, 'Certamen1');
+              _navigate(context, 'Certamen');
             },
           ),
           Divider(
@@ -153,8 +153,8 @@ class Drawer_widget extends StatelessWidget {
         //   return ProfileOptionsPage();
         case 'AppOptions':
           return AppOptionsPage();
-        //case 'Certamen'
-        //return Certamen1(nombre_alumno)();
+        case 'Certamen':
+          return C1HomePage();
         default:
           return HomePage();
       }
