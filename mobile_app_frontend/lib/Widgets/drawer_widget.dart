@@ -5,6 +5,8 @@ import 'package:mobile_app_frontend/Pages/home_page.dart';
 import 'package:mobile_app_frontend/Pages/profile_options.dart';
 import 'package:mobile_app_frontend/Pages/profile_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_app_frontend/certamen1_javier_rojas_302/contact_screen.dart';
+import 'package:mobile_app_frontend/certamen1_javier_rojas_302/home.dart';
 
 class Drawer_widget extends StatelessWidget {
   const Drawer_widget({
@@ -90,7 +92,6 @@ class Drawer_widget extends StatelessWidget {
             ),
             onTap: () => showDialog<String>(
               context: context,
-              
               builder: (BuildContext context) => AlertDialog(
                 backgroundColor: Color(0xff1f1d2c),
                 title: const Text('Log Out'),
@@ -126,13 +127,13 @@ class Drawer_widget extends StatelessWidget {
             color: Colors.redAccent,
           ),
           ListTile(
-            title: Text('Certamen1'),
+            title: Text('Certamen'),
             leading: Icon(
               MdiIcons.codeTags,
               color: Color.fromARGB(255, 255, 0, 0),
             ),
             onTap: () {
-              _navigate(context, 'Certamen1');
+              _navigate(context, 'Certamen');
             },
           ),
           Divider(
@@ -153,8 +154,8 @@ class Drawer_widget extends StatelessWidget {
         //   return ProfileOptionsPage();
         case 'AppOptions':
           return AppOptionsPage();
-        //case 'Certamen'
-        //return Certamen1(nombre_alumno)();
+        case 'Certamen':
+          return Home();
         default:
           return HomePage();
       }
