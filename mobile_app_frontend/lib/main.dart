@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_app_frontend/Pages/home_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,8 +25,17 @@ class MyApp extends StatelessWidget {
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
         primarySwatch: Colors.blue,
+        fontFamily: 'Poppins',
+        textTheme:  GoogleFonts.poppinsTextTheme(
+        
+        Theme.of(context).textTheme.apply(
+          
+        bodyColor: Colors.white, //<-- SEE HERE
+        displayColor: Colors.white, //<-- SEE HERE
+    )),
+
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: HomePage(),
     );
   }
 }
