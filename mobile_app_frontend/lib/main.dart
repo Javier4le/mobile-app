@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobile_app_frontend/Certamen_william_gutierrez/certamen1_william_gutierrez.dart';
 import 'package:mobile_app_frontend/Pages/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_app_frontend/api_auth/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,13 +28,13 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
         fontFamily: 'Poppins',
-        textTheme:
+        /*textTheme:
             GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme.apply(
                   bodyColor: Colors.white, //<-- SEE HERE
                   displayColor: Colors.white, //<-- SEE HERE
-                )),
+                )),*/
       ),
-      home: C1HomePage(),
+      home: LoginPage(),
     );
   }
 }

@@ -6,6 +6,7 @@ import 'package:mobile_app_frontend/Pages/home_page.dart';
 import 'package:mobile_app_frontend/Pages/profile_options.dart';
 import 'package:mobile_app_frontend/Pages/profile_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_app_frontend/api_auth/login_page.dart';
 
 class Drawer_widget extends StatelessWidget {
   const Drawer_widget({
@@ -112,20 +113,6 @@ class Drawer_widget extends StatelessWidget {
             color: Colors.redAccent,
           ),
           ListTile(
-            title: Text('Close'),
-            leading: Icon(
-              Icons.close,
-              color: Color.fromARGB(255, 255, 0, 0),
-            ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          Divider(
-            thickness: 2,
-            color: Colors.redAccent,
-          ),
-          ListTile(
             title: Text('Certamen1'),
             leading: Icon(
               MdiIcons.codeTags,
@@ -133,6 +120,34 @@ class Drawer_widget extends StatelessWidget {
             ),
             onTap: () {
               _navigate(context, 'Certamen');
+            },
+          ),
+          Divider(
+            thickness: 2,
+            color: Colors.redAccent,
+          ),
+          ListTile(
+            title: Text('Api_auth'),
+            leading: Icon(
+              MdiIcons.accountTieHat,
+              color: Color.fromARGB(255, 255, 0, 0),
+            ),
+            onTap: () {
+              _navigate(context, 'Api');
+            },
+          ),
+          Divider(
+            thickness: 2,
+            color: Colors.redAccent,
+          ),
+          ListTile(
+            title: Text('Close'),
+            leading: Icon(
+              Icons.close,
+              color: Color.fromARGB(255, 255, 0, 0),
+            ),
+            onTap: () {
+              Navigator.pop(context);
             },
           ),
           Divider(
@@ -155,6 +170,8 @@ class Drawer_widget extends StatelessWidget {
           return AppOptionsPage();
         case 'Certamen':
           return C1HomePage();
+        case 'Api':
+          return LoginPage();
         default:
           return HomePage();
       }
