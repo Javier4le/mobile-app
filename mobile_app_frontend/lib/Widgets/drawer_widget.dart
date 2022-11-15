@@ -5,6 +5,7 @@ import 'package:mobile_app_frontend/Pages/home_page.dart';
 import 'package:mobile_app_frontend/Pages/profile_options.dart';
 import 'package:mobile_app_frontend/Pages/profile_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_app_frontend/api_autos/api_home.dart';
 
 class Drawer_widget extends StatelessWidget {
   const Drawer_widget({
@@ -153,8 +154,8 @@ class Drawer_widget extends StatelessWidget {
         //   return ProfileOptionsPage();
         case 'AppOptions':
           return AppOptionsPage();
-        //case 'Certamen'
-        //return Certamen1(nombre_alumno)();
+        case 'Certamen1':
+        return ApiAutos();
         default:
           return HomePage();
       }
