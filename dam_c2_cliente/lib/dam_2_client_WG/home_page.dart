@@ -14,14 +14,16 @@ class _HomePageDam2State extends State<HomePageDam2> {
   int _currentIndex = 0;
 
   List<Widget> _pages = [
-    FormPage(),
     CarsPage(),
+    FormPage(),
+    
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         leading: Icon(MdiIcons.car2Plus),
         title: Text(
           "DAM020-CLIENTE",
@@ -42,8 +44,8 @@ class _HomePageDam2State extends State<HomePageDam2> {
                     context: context,
                     builder: (context) {
                       return AlertDialog(
-                        title: Text("Acerda de"),
-                        content: Text("Conoce un poco mas de nosotros!"),
+                        title: Text("Acerca de"),
+                        content: Text("Conoce un poco mas de nosotros!, \nRecuerda que al presionar sobre un auto en la pagina Autos puedes borrarlo!"),
                         actions: <Widget>[
                           TextButton(
                             child: Text("Ok"),
@@ -69,13 +71,16 @@ class _HomePageDam2State extends State<HomePageDam2> {
       ),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.black,
         items: [
+          
           BottomNavigationBarItem(
-              icon: Icon(MdiIcons.carInfo),
-              label: 'Autos',
+              
+              icon: Icon(MdiIcons.carInfo,color: Colors.orange.shade700,),
+              label: 'Autos',       
               backgroundColor: Colors.orange.shade700),
           BottomNavigationBarItem(
-              icon: Icon(MdiIcons.accountBox),
+              icon: Icon(MdiIcons.accountBox,color:Colors.orange.shade700),
               label: 'Inicia Sesion',
               backgroundColor: Colors.orange.shade700)
         ],

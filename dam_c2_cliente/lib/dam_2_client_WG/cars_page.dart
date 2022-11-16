@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:mobile_app_frontend/provider/api_autos_provider.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class CarsPage extends StatefulWidget {
   //const CarsPage({super.key});
@@ -10,8 +12,8 @@ class CarsPage extends StatefulWidget {
 
 class _CarsPageState extends State<CarsPage> {
   AutosProvider provider = new AutosProvider();
-  TextEditingController vinauto = new TextEditingController();
   String autos = '';
+  String vin = '12345';
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +21,12 @@ class _CarsPageState extends State<CarsPage> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: const BoxDecoration(
+        
+        decoration: const BoxDecoration(  
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
+              
               colors: <Color>[Color(0xffde6161), Colors.green]),
         ),
         child: FutureBuilder(
@@ -35,13 +39,19 @@ class _CarsPageState extends State<CarsPage> {
               );
             }
             return ListView(
+            
               shrinkWrap: true,
               children: snapshot.data.map<Widget>((autos) {
                 return ListTile(
-                    title: Text(autos['marca'] + ' ' + autos['modelo']),
-                    subtitle: Text("Año: " + autos['año'].toString()),
-                    trailing: Text(" Precio: " + autos['precio'].toString()),
+                    leading: Icon(MdiIcons.car,color: Colors.black),
+                    title: Text(autos['marca'] + ' ' + autos['modelo'],
+                    style: TextStyle(color: Colors.white),),
+                    shape: Border(bottom: BorderSide(color: Colors.black)),
+                    subtitle: Text("Año: " + autos['año'].toString(),style: TextStyle(color: Colors.white)),
+                    trailing: Text( "\$ ${autos['precio'].toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]}.')}",style: TextStyle(color: Colors.white)),
+                          
                     onTap: () {
+                      
                       showDialog(
                           context: context,
                           builder: (context) {
@@ -52,7 +62,7 @@ class _CarsPageState extends State<CarsPage> {
                               actions: <Widget>[
                                 TextButton(
                                   child: Text("Cancel"),
-                                  onPressed: () {
+                                  onPressed: () {                                 
                                     Navigator.pop(context);
                                   },
                                 ),
@@ -60,7 +70,10 @@ class _CarsPageState extends State<CarsPage> {
                                   child: Text("Continue"),
                                   onPressed: () {
                                     Navigator.pop(context);
-                                    provider.deleteAuto(autos['vin']);
+                                    provider.deleteAuto(autos['vin']);                                   
+                                    setState(() {
+                                      autos = autos['vin'];
+                                    });
                                   },
                                 )
                               ],
@@ -74,15 +87,4 @@ class _CarsPageState extends State<CarsPage> {
       ),
     );
   }
-
-/*  Widget cancelButton = TextButton(
-    child: Text("Cancel"),
-    onPressed: () {
-      Navigator.pop(context);
-    },
-  );
-  Widget continueButton = TextButton(
-    child: Text("Continue"),
-    onPressed: () {},
-  );*/
 }

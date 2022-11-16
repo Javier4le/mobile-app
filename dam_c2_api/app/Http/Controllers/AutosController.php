@@ -48,7 +48,6 @@ class AutosController extends Controller
     public function show(Auto $auto)
     {
         //
-        $auto->id = $auto->vin;
         return $auto;
     }
 
@@ -62,7 +61,13 @@ class AutosController extends Controller
     public function update(Request $request, Auto $auto)
     {
         //
-
+        $auto->vin = $request-> vin;
+        $auto->marca = $request->marca;
+        $auto->modelo = $request->modelo;
+        $auto->año = $request->año;
+        $auto->precio = $request->precio;
+        $auto->save();
+        return $auto;
     }
 
     /**
