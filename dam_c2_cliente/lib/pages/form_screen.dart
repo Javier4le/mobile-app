@@ -46,7 +46,13 @@ class _FormScreenState extends State<FormScreen> {
                 height: 20,
               ),
               // vin
-              TextField(
+              TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor ingrese el VIN';
+                  }
+                  return null;
+                },
                 controller: vin,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
@@ -57,7 +63,13 @@ class _FormScreenState extends State<FormScreen> {
               const SizedBox(
                 height: 20,
               ),
-              TextField(
+              TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor ingrese la marca';
+                  }
+                  return null;
+                },
                 controller: marca,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
@@ -68,7 +80,13 @@ class _FormScreenState extends State<FormScreen> {
               const SizedBox(
                 height: 20,
               ),
-              TextField(
+              TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor ingrese el modelo';
+                  }
+                  return null;
+                },
                 controller: modelo,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
@@ -79,7 +97,13 @@ class _FormScreenState extends State<FormScreen> {
               const SizedBox(
                 height: 20,
               ),
-              TextField(
+              TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor ingrese el año';
+                  }
+                  return null;
+                },
                 controller: annio,
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
@@ -92,7 +116,13 @@ class _FormScreenState extends State<FormScreen> {
                 height: 20,
               ),
               // precio
-              TextField(
+              TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Por favor ingrese el precio';
+                  }
+                  return null;
+                },
                 controller: precio,
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(
@@ -110,11 +140,8 @@ class _FormScreenState extends State<FormScreen> {
                   provider.addAutos(vin.text, marca.text, modelo.text,
                       int.parse(annio.text), int.parse(precio.text));
 
-                  // Navigator.push(
-                  //     context, MaterialPageRoute(builder: (context) => Home()));
-
-                  // redirigir a la pantalla de autos con el nuevo auto
-                  // Navigator.pushNamed(context, '/autos');
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => Home()));
                 },
                 child: const Text('Agregar'),
               ),
