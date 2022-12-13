@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::apiResource('autos', AutosController::class);
-Route::get('autos/{auto.vin', [AutosController::class, 'show']);
+// Route::get('autos/{auto.vin', [AutosController::class, 'show']);

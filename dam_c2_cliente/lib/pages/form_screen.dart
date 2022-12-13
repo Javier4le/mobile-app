@@ -152,9 +152,16 @@ class _FormScreenState extends State<FormScreen> {
                               builder: (context) => Home(),
                             ),
                           );
+                          // Navigator.of(context).push(
+                          //   MaterialPageRoute(
+                          //     builder: (context) => Home(),
+                          //   ),
+                          // );
                         }
                       });
                     }
+                    //validate and return home page
+
                     // provider.addAutos(vin.text, marca.text, modelo.text,
                     //     int.parse(annio.text), int.parse(precio.text));
 
