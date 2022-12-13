@@ -1,10 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:mobile_app_frontend/Pages/app_config_page.dart';
 import 'package:mobile_app_frontend/Pages/home_page.dart';
+import 'package:mobile_app_frontend/Pages/login_page.dart';
 import 'package:mobile_app_frontend/Pages/profile_options.dart';
 import 'package:mobile_app_frontend/Pages/profile_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_app_frontend/Test%20Folder/login_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Drawer_widget extends StatelessWidget {
   const Drawer_widget({
@@ -12,136 +16,138 @@ class Drawer_widget extends StatelessWidget {
   }) : super(key: key);
 
   @override
+
+  
+
   Widget build(BuildContext context) {
-    return Drawer(
-      backgroundColor: Color(0xff1f1d2c),
-      child: ListView(
-        children: [
-          DrawerHeader(
-            child: Column(
-              children: [
-                Container(
-                  height: 90,
-                  width: 100,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/user.png'))),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    'Bienvenido! (username)',
-                    style: TextStyle(fontSize: 20),
+    return Container(
+      child: Drawer(
+        backgroundColor: Color(0xff1f1d2c),
+        child: ListView(
+          children: [
+            DrawerHeader(
+              child: Column(
+                children: [
+                  Container(
+                    height: 90,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/user.png'))),
                   ),
-                )
-              ],
-            ),
-          ),
-          ListTile(
-            title: Text(
-              'Profile',
-            ),
-            leading: Icon(
-              MdiIcons.account,
-              color: Color.fromARGB(255, 255, 0, 0),
-            ),
-            onTap: () {
-              _navigate(context, 'Profile');
-            },
-          ),
-          // Divider(
-          //   thickness: 2,
-          //   color: Colors.redAccent,
-          // ),
-          // ListTile(
-          //   title: Text('Profile Options'),
-          //   leading: Icon(
-          //     MdiIcons.accountCog,
-          //     color: Color.fromARGB(255, 255, 0, 0),
-          //   ),
-          //   onTap: () {
-          //     _navigate(context, 'POptions');
-          //   },
-          // ),
-          Divider(
-            thickness: 2,
-            color: Colors.redAccent,
-          ),
-          ListTile(
-            title: Text('App Config'),
-            leading: Icon(
-              Icons.settings,
-              color: Color.fromARGB(255, 255, 0, 0),
-            ),
-            onTap: () {
-              _navigate(context, 'AppOptions');
-            },
-          ),
-          Divider(
-            thickness: 2,
-            color: Colors.redAccent,
-          ),
-          ListTile(
-            title: Text('Log Out'),
-            leading: Icon(
-              MdiIcons.logoutVariant,
-              color: Color.fromARGB(255, 255, 0, 0),
-            ),
-            onTap: () => showDialog<String>(
-              context: context,
-              
-              builder: (BuildContext context) => AlertDialog(
-                backgroundColor: Color(0xff1f1d2c),
-                title: const Text('Log Out'),
-                content: const Text('Do you want to log out?'),
-                actions: <Widget>[
-                  TextButton(
-                      onPressed: () => Navigator.pop(context, 'Cancel'),
-                      child: const Text('Cancel')),
-                  TextButton(
-                    onPressed: () => Navigator.pop(context, 'OK'),
-                    child: const Text('OK'),
-                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: FutureBuilder(
+                      future: this.getUserEmail(),
+                       builder: (context, AsyncSnapshot snapshot) {
+                  if (!snapshot.hasData ||
+                      snapshot.connectionState == ConnectionState.waiting) {
+                    return Text("Cargando");
+                  }
+                  return Text("Bienvenido "+
+                    snapshot.data,
+                    style: TextStyle(fontSize: 16),
+                  );
+                }
+
+                    )
+                  )
                 ],
               ),
             ),
-          ),
-          Divider(
-            thickness: 2,
-            color: Colors.redAccent,
-          ),
-          ListTile(
-            title: Text('Close'),
-            leading: Icon(
-              Icons.close,
-              color: Color.fromARGB(255, 255, 0, 0),
+            ListTile(
+              title: Text(
+                'Profile',
+              ),
+              leading: Icon(
+                MdiIcons.account,
+                color: Color.fromARGB(255, 255, 0, 0),
+              ),
+              onTap: () {
+                _navigate(context, 'Profile');
+              },
             ),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          Divider(
-            thickness: 2,
-            color: Colors.redAccent,
-          ),
-          ListTile(
-            title: Text('Certamen1'),
-            leading: Icon(
-              MdiIcons.codeTags,
-              color: Color.fromARGB(255, 255, 0, 0),
+            // Divider(
+            //   thickness: 2,
+            //   color: Colors.redAccent,
+            // ),
+            // ListTile(
+            //   title: Text('Profile Options'),
+            //   leading: Icon(
+            //     MdiIcons.accountCog,
+            //     color: Color.fromARGB(255, 255, 0, 0),
+            //   ),
+            //   onTap: () {
+            //     _navigate(context, 'POptions');
+            //   },
+            // ),
+            Divider(
+              thickness: 2,
+              color: Colors.redAccent,
             ),
-            onTap: () {
-              _navigate(context, 'Certamen1');
-            },
-          ),
-          Divider(
-            thickness: 2,
-            color: Colors.redAccent,
-          ),
-        ],
+            ListTile(
+              title: Text('App Config'),
+              leading: Icon(
+                Icons.settings,
+                color: Color.fromARGB(255, 255, 0, 0),
+              ),
+              onTap: () {
+                _navigate(context, 'AppOptions');
+              },
+            ),
+            Divider(
+              thickness: 2,
+              color: Colors.redAccent,
+            ),
+            ListTile(
+              title: Text('Log Out'),
+              leading: Icon(
+                MdiIcons.logoutVariant,
+                color: Color.fromARGB(255, 255, 0, 0),
+              ),
+              onTap: () => logout(context),
+            ),
+            Divider(
+              thickness: 2,
+              color: Colors.redAccent,
+            ),
+            ListTile(
+              title: Text('Close'),
+              leading: Icon(
+                Icons.close,
+                color: Color.fromARGB(255, 255, 0, 0),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            Divider(
+              thickness: 2,
+              color: Colors.redAccent,
+            ),
+          ],
+        ),
       ),
     );
+  }
+
+  void logout(BuildContext context) async {
+    // Cerrar la sesion en firebase
+    await FirebaseAuth.instance.signOut();
+
+    // Borrar user Email de shared preferences
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    sp.remove('userEmail');
+
+    // redirigir al login
+    MaterialPageRoute route =
+        MaterialPageRoute(builder: ((context) => LoginTest()));
+    Navigator.pushReplacement(context, route);
+  }
+  Future<String> getUserEmail() async {
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    return sp.getString('userEmail') ?? '';
   }
 
   void _navigate(BuildContext context, String screen) {
@@ -153,8 +159,6 @@ class Drawer_widget extends StatelessWidget {
         //   return ProfileOptionsPage();
         case 'AppOptions':
           return AppOptionsPage();
-        //case 'Certamen'
-        //return Certamen1(nombre_alumno)();
         default:
           return HomePage();
       }

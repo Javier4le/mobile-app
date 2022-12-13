@@ -1,8 +1,13 @@
+
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mobile_app_frontend/Pages/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_app_frontend/Test%20Folder/login_test.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -26,16 +31,17 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
         fontFamily: 'Poppins',
+        
         textTheme:  GoogleFonts.poppinsTextTheme(
         
         Theme.of(context).textTheme.apply(
           
         bodyColor: Colors.white, //<-- SEE HERE
         displayColor: Colors.white, //<-- SEE HERE
-    )),
+    ))
 
       ),
-      home: HomePage(),
+      home: LoginTest(),
     );
   }
 }

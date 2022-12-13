@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "674520640317",
+    "project_id": "dam-enjoy-project",
+    "storage_bucket": "dam-enjoy-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674520640317:android:e5c4b6157946c59078b354",
+        "android_client_info": {
+          "package_name": "com.example.dam_enjoy_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "674520640317-kdtnbqo7f4jq8oduv4ldr2e7bbsnfs3s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6udskDskCCYjdmIXbuW9WQ861ulYqBRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "674520640317-kdtnbqo7f4jq8oduv4ldr2e7bbsnfs3s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
