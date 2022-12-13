@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:mobile_app_frontend/Pages/home_page.dart';
+import 'package:mobile_app_frontend/Service/firestore_service.dart';
 import 'package:mobile_app_frontend/Test%20Folder/login_test.dart';
 import 'package:mobile_app_frontend/Widgets/drawer_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,6 +20,7 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   TextEditingController emailCtrl = TextEditingController();
   TextEditingController passCtrl = TextEditingController();
+  TextEditingController nomCtrl = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   String errorText = '';
   final emailRegex =
@@ -58,6 +60,8 @@ class _SignUpState extends State<SignUp> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        campoUser(),
+                        Divider(),
                         campoEmail(),
                         Divider(),
                         campoPassword(),
@@ -145,6 +149,24 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
+   TextFormField campoUser() {
+    return TextFormField(
+      controller: nomCtrl,  
+      decoration: InputDecoration(
+        //* BORDERS
+        enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide(width: 3, color: Colors.white)),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: BorderSide(width: 3, color: Colors.white),
+        ),
+        labelText: 'Nombre',
+        labelStyle: TextStyle(color: Colors.white),
+      ),
+    );
+  }
+
   void signup() async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -152,6 +174,7 @@ class _SignUpState extends State<SignUp> {
       MaterialPageRoute route =
           MaterialPageRoute(builder: (context) => LoginTest());
       Navigator.pushReplacement(context, route);
+      FirestoreService().addUser(emailCtrl.text.trim(), nomCtrl.text.trim());
     } on FirebaseAuthException catch (ex) {
       print("CODE: " +ex.code);
        switch (ex.code) {
